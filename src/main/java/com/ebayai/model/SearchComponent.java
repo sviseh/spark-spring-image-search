@@ -54,7 +54,7 @@ public class SearchComponent {
         SearchIndex si = new SearchIndex();
 
         Item refItem = this.castRowToItem(si.findItem(itemId));
-        Dataset<Row> categoryItems = si.getCategoryItemIterator(refItem.getLeafCategId());
+        Dataset<Row> categoryItems = si.getCategoryItems(refItem.getLeafCategId());
         List<Float> descriptors = refItem.getEmbedding();
 
         Dataset<Row> distances = categoryItems.map(new EuclideanDistanceMapFunction(descriptors), EuclideanDistanceMapFunction.getEncoder());

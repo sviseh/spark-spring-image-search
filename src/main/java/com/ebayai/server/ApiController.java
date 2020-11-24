@@ -52,7 +52,7 @@ public class ApiController {
     @RequestMapping(value="/cat/{catId}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE})
     public List<ItemInfo> catSearch(@PathVariable("catId") long catId) {
         SearchIndex si = new SearchIndex();
-        Dataset<Row> d = si.getCategoryItemIterator(catId);
+        Dataset<Row> d = si.getCategoryItems(catId);
 
         StringBuilder sb = new StringBuilder();
         int count = 0;

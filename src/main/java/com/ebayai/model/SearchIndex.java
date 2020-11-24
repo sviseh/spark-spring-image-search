@@ -20,7 +20,7 @@ public class SearchIndex {
     /***********************************
      *
      **********************************/
-    public Dataset<Row> getCategoryItemIterator(long categoryId){
+    public Dataset<Row> getCategoryItems(long categoryId){
         Dataset<Row> result = sdb.ds().filter("leaf_categ_id = "+categoryId).distinct().cache();
 
         return result;
