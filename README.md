@@ -8,11 +8,11 @@ https://maven.apache.org/install.html
 ###Set Properties:
 Make sure the properties in `src/main/resources/application.properties` are set properly.
 
-**server.port** defines the port number for http connection
-**avro** should points to the data (.avro) file
-**avsc** should points to the schema (.avsc) file
-**partition.path** sets the folder in which the preprocessed data is stored
-**log4j.rootCategory** sets the log level, setting it to lower than INFO will drastically imapact the perdormance as it will increase number of io operation
+- **server.port** defines the port number for http connection
+- **avro** should points to the data (.avro) file
+- **avsc** should points to the schema (.avsc) file
+- **partition.path** sets the folder in which the preprocessed data is stored
+- **log4j.rootCategory** sets the log level, setting it to lower than INFO will drastically imapact the perdormance as it will increase number of io operation
 
 ###Command to build and package the project:
 `mvn clean package`
