@@ -1,5 +1,7 @@
 # spark-spring-image-search
 
+![alt text](https://github.com/sviseh/spark-spring-image-search/blob/main/search-result-converse.png?raw=true)
+
 ## Build and packaging:
 
 ### Make sure you have maven installed:
