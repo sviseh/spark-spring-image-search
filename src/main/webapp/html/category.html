@@ -1,0 +1,102 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta charset=utf-8>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <title>Categories</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" type="text/css" href="/static/style.css"></link>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--<img class="loading-image" src=""/>-->
+    <!--{{ itemId }}-->
+    <div class="view">
+        <div class="left">
+            <div class="breadcrumb">Categories</div>
+            <div v-for="category in categories" class="cat-id"
+                 v-on:click="clicked(category)"
+                 v-bind:class="{ active: category ==  categoryId}">{{category}}</div>
+        </div>
+        <div class="right">
+            <div v-if="loading" class="loading"></div>
+            <div v-else class="tile-container" ref="tile-container">
+                <div v-for="item in items" class="tile"
+                     v-on:click="clicked(item.itemId, true)">
+                    <div class="tile-image" v-bind:style='{"background-image":"url("+item.imageUrl+")"}'></div>
+                    <div class="item-id">{{item.itemId}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+var router = new VueRouter({
+    mode: 'history',
+    routes: [{ path: '/cat/:id'}]
+});
+
+var app = new Vue({
+    router,
+    el: '#app',
+    data: {
+        categoryId:0,
+        categories: [169291, 63861, 15687, 15709],
+        items:[],
+        loading: false
+    },
+    created(){
+        this.fetchData();
+    },
+    watch: {
+        '$route': 'fetchData'
+    },
+    mounted(){
+    },
+    updated() {
+        this.$nextTick(() => {
+            if(this.$refs["tile-container"] && this.$refs["tile-container"].scrollTop != undefined){
+                this.$refs["tile-container"].scrollTop = 0;
+            } else {
+                console.log("Failed to scroll top :(");
+            }
+        })
+    },
+    methods: {
+        clicked(_id, _isItem){
+            if(_isItem){
+                document.location.href = `/itm/${_id}`;
+            } else {
+                this.categoryId = _id;
+                document.location.href = `/cat/${_id}`;
+            }
+        },
+        fetchData () {
+            this.categoryId = this.$route.params.id;
+
+            if(!this.categoryId){
+                this.clicked(this.categories[0]);
+                return;
+            }
+
+            this.loading = true;
+
+            fetch(`/api/cat/${this.categoryId}`)
+                .then(response => response.json())
+                .then(data => {
+                    this.loading = false;
+                    this.items = data;
+                });
+        }
+    }
+})
+</script>

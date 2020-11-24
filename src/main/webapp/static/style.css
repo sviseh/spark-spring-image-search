@@ -1,0 +1,122 @@
+body{
+    padding:0px;
+    margin: 0px;
+}
+
+div {
+    font-family: lato;
+}
+
+.view {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+}
+
+.left {
+    width: 400px;
+    height: 100%;
+    background: #f0f0f0;
+    flex-direction: column;
+    display: flex;
+    justify-content: end;
+    padding-top: 100px;
+}
+
+.right {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+.cat-id {
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+}
+
+.breadcrumb {
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.cat-id.active {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.cat-id:hover {
+    font-style: italic;
+}
+
+.loading {
+    background: url(https://mir-s3-cdn-cf.behance.net/project_modules/disp/35771931234507.564a1d2403b3a.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+}
+
+.tile {
+    width: 24%;
+    position:relative;
+    display: inline-block;
+    cursor:pointer;
+    max-width: 350px;
+    min-width: 280px;
+    margin-bottom: 2%;
+}
+
+.tile:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.tile-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.tile-image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 86%;
+    height: 80%;
+    position: absolute;
+    margin: 2% 8%;
+}
+
+.item-id {
+    position: absolute;
+    bottom: 0px;
+    width:100%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.left-image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 90%;
+    padding-bottom: 100%;
+    margin: 5%;
+}
+
+.left-id,.left-cat-id {
+    text-align: center;
+    height: 40px;
+}
+
+.left-cat-id {
+    cursor:pointer;
+}
