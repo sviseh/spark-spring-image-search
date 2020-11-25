@@ -34,5 +34,5 @@ It will start a jetty webserver at server.port and a Spark UI at port 4040
 ## Deploy as a container:
 To create a Docker image run `docker build -t spark-spring-image-search .`
 
-To deploy, run `docker run -it -d -p 80:80 -p 4040:4040 -v {partition.path}:/{partition.path} spark-spring:latest `
+To deploy, run `docker run -it -d -p 80:80 -p 4040:4040 -v {partition.path}:/{partition.path} spark-spring-image-search:latest `
 

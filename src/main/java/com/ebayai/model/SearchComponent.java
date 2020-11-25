@@ -68,7 +68,10 @@ public class SearchComponent {
 
             ItemInfo item = new ItemInfo(di.getLong(0), (long) di.getInt(1), di.getString(2));
 
-            this.addPair(new Pair<>(dist, item), num);
+            //for testing purposes, keep the item itself
+            //if(item.getItemId() != itemId) {
+                this.addPair(new Pair<>(dist, item), num);
+            //}
         }
 
         logger.warn("exec time: "+(new Date().getTime() - start) / 60000.0);
